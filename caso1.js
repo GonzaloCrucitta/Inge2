@@ -44,11 +44,11 @@ function main(){
 
     console.log("El tren está por pasar. La barrera está: " + barrera.getEstado());
     
-    sensor.activar(); // el sensor intenta bajarla, pero ya está baja, así que no hace nada
+    sensor.activar();
 
     console.log("El tren está pasando. La barrera está: " + barrera.getEstado());
 
-    sensor.desactivar(); // ahora sí se levanta
+    sensor.desactivar();
 
     console.log("El tren terminó de pasar. La barrera está: " + barrera.getEstado());
 }
