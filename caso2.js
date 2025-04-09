@@ -48,10 +48,7 @@ function main(){
 
     console.log("El tren ya está en el cruce. La barrera está: " + barrera.getEstado());
 
-    // Acá no bajamos la barrera porque la situación ya es una falla inicial
-
-    console.log("El tren se retira del cruce...");
-    sensor.desactivar(); // solo se levanta si estuviera baja
+    sensor.desactivar();
 
     console.log("La barrera está ahora: " + barrera.getEstado());
 }
