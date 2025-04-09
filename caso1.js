@@ -5,14 +5,52 @@ ya esta baja no tiene que volver a bajar y cuando el tren se retira, la barrera 
 y vuelve a su estado estable.
 */
 
-class barrera {
-    constructor(){
-        this.estadoBarrera = "bajada";
+class Barrera {
+    constructor(estado){
+        this.estadoBarrera = estado;
+    }
+    getEstado(){
+        return this.estadoBarrera;
     }
     subirBarrera(){
-        estadoBarrera = "levantada"
+        if(this.estadoBarrera !== "levantada") {
+            console.log("Subiendo la barrera...");
+            this.estadoBarrera = "levantada";
+        }
     }
     bajarBarrera(){
-        estadoBarrera = "bajada"
+        if(this.estadoBarrera !== "baja") {
+            console.log("Bajando la barrera...");
+            this.estadoBarrera = "baja";
+        }
     }
 }
+
+class Sensor {
+    constructor(barrera){
+        this.barrera = barrera
+    }
+    activar(){
+        this.barrera.bajarBarrera();
+    }
+    desactivar(){
+        this.barrera.subirBarrera();
+    }
+}
+
+function main(){
+    barrera = new Barrera("baja");  // la barrera ya está baja por error
+    sensor = new Sensor(barrera)
+
+    console.log("El tren está por pasar. La barrera está: " + barrera.getEstado());
+    
+    sensor.activar(); // el sensor intenta bajarla, pero ya está baja, así que no hace nada
+
+    console.log("El tren está pasando. La barrera está: " + barrera.getEstado());
+
+    sensor.desactivar(); // ahora sí se levanta
+
+    console.log("El tren terminó de pasar. La barrera está: " + barrera.getEstado());
+}
+
+main();
